@@ -25,6 +25,7 @@ function AppBar() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
+          overflowX: "auto",
         }}
       >
         <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
@@ -53,11 +54,14 @@ function AppBar() {
               Trello
             </Typography>
           </Box>
-          <Workspaces />
-          <Recent />
-          <Starred />
-          <Templates />
-          <Button variant="outlined">CREATE</Button>
+          <Box sx={{ display: { xs: "none", md: "flex" }, gap: 1 }}>
+            {" "}
+            <Workspaces />
+            <Recent />
+            <Starred />
+            <Templates />
+            <Button variant="outlined">CREATE</Button>
+          </Box>
         </Box>
         <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
           <TextField
