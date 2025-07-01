@@ -1,6 +1,7 @@
 import { createTheme } from "@mui/material/styles";
 import { experimental_extendTheme as extendTheme } from "@mui/material/styles";
 import { deepOrange, orange, teal, cyan } from "@mui/material/colors";
+import { BorderColor, BorderStyle } from "@mui/icons-material";
 
 // Create a theme instance.
 
@@ -23,7 +24,45 @@ const theme = extendTheme({
       },
     },
   },
-  // ...other properties
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: "none",
+        },
+      },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          color: theme.palette.primary.main,
+          fontSize: "0.875rem",
+        }),
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        // root:({theme})=>{
+        //   //console.log(theme) dung de lay cac gia tri theme de config
+        // }
+        root: ({ theme }) => ({
+          color: theme.palette.primary.main,
+          fontSize: "0.875rem",
+          ".MuiOutlinedInput-notchedOutline": {
+            borderColor: theme.palette.primary.light,
+          },
+          "&:hover": {
+            ".MuiOutlinedInput-notchedOutline": {
+              borderColor: theme.palette.primary.main,
+            },
+          },
+          "& fieldset": {
+            borderWidth: "1px !important",
+          },
+        }),
+      },
+    },
+  },
 });
 
 export default theme;
