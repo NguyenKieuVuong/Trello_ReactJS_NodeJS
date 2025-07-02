@@ -15,6 +15,7 @@ import Badge from "@mui/material/Badge";
 import Tooltip from "@mui/material/Tooltip";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import Profiles from "./Menus/Profiles";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 function AppBar() {
   return (
     <>
@@ -26,6 +27,7 @@ function AppBar() {
           alignItems: "center",
           justifyContent: "space-between",
           overflowX: "auto",
+          paddingX: 2,
         }}
       >
         <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
@@ -60,7 +62,9 @@ function AppBar() {
             <Recent />
             <Starred />
             <Templates />
-            <Button variant="outlined">CREATE</Button>
+            <Button variant="outlined" startIcon={<AddCircleOutlineIcon />}>
+              CREATE
+            </Button>
           </Box>
         </Box>
         <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
