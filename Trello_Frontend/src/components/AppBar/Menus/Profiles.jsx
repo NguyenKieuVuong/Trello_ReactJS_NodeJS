@@ -30,7 +30,7 @@ function Profiles() {
           aria-expanded={open ? "true" : undefined}
         >
           <Avatar
-            sx={{ width: 32, height: 32 }}
+            sx={{ width: 36, height: 36 }}
             alt="Vuong"
             src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
           />
