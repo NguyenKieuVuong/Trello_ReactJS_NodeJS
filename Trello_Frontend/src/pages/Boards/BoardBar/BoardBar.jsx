@@ -35,7 +35,6 @@ function BoardBar() {
           justifyContent: "space-between",
           gap: 2,
           overflowX: "auto",
-          borderBottom: "1px solid #FFF",
           paddingX: 2,
            "&::-webkit-scrollbar-track": {
               m: 2,

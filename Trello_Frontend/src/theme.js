@@ -7,11 +7,15 @@ import { BorderColor, BorderStyle } from "@mui/icons-material";
 const App_Bar_Height = "58px";
 const board_Bar_Height = "60px";
 const board_Content_Height = `calc(100vh - ${App_Bar_Height} - ${board_Bar_Height})`;
+const Column_Header_Height = "50px";
+const Column_Footer_Height = "56px";
 const theme = extendTheme({
   trello: {
     appBarHeight: App_Bar_Height,
     boardBarHeight: board_Bar_Height,
     boardContentHeight: board_Content_Height,
+    columnHeaderHeight: Column_Header_Height,
+    columnFooterHeight: Column_Footer_Height,
   },
   colorSchemes: {
     // light: {
