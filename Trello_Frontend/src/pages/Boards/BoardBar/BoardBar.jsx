@@ -11,7 +11,8 @@ import AvatarGroup from "@mui/material/AvatarGroup";
 import Tooltip from "@mui/material/Tooltip";
 import Button from "@mui/material/Button";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
-function BoardBar() {
+import { capitalizeFirstLetter } from "~/utils/formatters";
+function BoardBar({ board }) {
   const MENU_STYLE = {
     color: "#fff",
     bgcolor: "transparent",
@@ -24,6 +25,7 @@ function BoardBar() {
       bgcolor: "primary.50",
     },
   };
+
   return (
     <>
       <Box
@@ -36,9 +38,9 @@ function BoardBar() {
           gap: 2,
           overflowX: "auto",
           paddingX: 2,
-           "&::-webkit-scrollbar-track": {
-              m: 2,
-            },
+          "&::-webkit-scrollbar-track": {
+            m: 2,
+          },
           bgcolor: (theme) =>
             theme.palette.mode === "dark" ? "#34495e" : "#1976d2",
         }}
@@ -53,13 +55,13 @@ function BoardBar() {
           <Chip
             sx={MENU_STYLE}
             icon={<DashboardIcon />}
-            label="Trello App"
+            label={board?.title}
             clickable
           />
           <Chip
             sx={MENU_STYLE}
             icon={<VpnLockIcon />}
-            label="Public/Private Workspace"
+            label={capitalizeFirstLetter(board?.type)}
             clickable
           />
           <Chip
@@ -111,10 +113,10 @@ function BoardBar() {
                 height: "32px",
                 fontSize: "1rem",
                 border: "none",
-                cursor:'pointer',
-                '&:first-of-type':{
-                  bgcolor:'#a4b0be'
-                }
+                cursor: "pointer",
+                "&:first-of-type": {
+                  bgcolor: "#a4b0be",
+                },
               },
             }}
             max={4}

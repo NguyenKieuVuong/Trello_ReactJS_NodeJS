@@ -9,7 +9,14 @@ import GroupIcon from "@mui/icons-material/Group";
 import ModeCommentIcon from "@mui/icons-material/ModeComment";
 import AttachmentIcon from "@mui/icons-material/Attachment";
 
-function Card() {
+function Card({ card }) {
+  const shouldShowCardActions = () => {
+    return (
+      !!card?.memberIds?.length ||
+      !!card?.comments?.length ||
+      !!card?.attachments?.length
+    );
+  };
   return (
     <MuiCard
       sx={{
@@ -18,29 +25,40 @@ function Card() {
         overflow: "unset",
       }}
     >
-      <CardMedia
-        sx={{ height: 140 }}
-        image="https://cdn.pixabay.com/photo/2022/08/08/19/36/landscape-7373484_1280.jpg"
-        title="green iguana"
-      />
+      {card?.cover && (
+        <CardMedia
+          sx={{ height: 140 }}
+          image={card?.cover}
+          title={card?.title}
+        />
+      )}
+
       <CardContent sx={{ p: 1.5, "&:last-child": { p: 1.5 } }}>
-        <Typography>Nature</Typography>
+        <Typography>{card?.title}</Typography>
       </CardContent>
-      <CardActions
-        sx={{
-          p: "0 4px 8px 4px",
-        }}
-      >
-        <Button size="small" startIcon={<GroupIcon />}>
-          20
-        </Button>
-        <Button size="small" startIcon={<ModeCommentIcon />}>
-          15
-        </Button>
-        <Button size="small" startIcon={<AttachmentIcon />}>
-          25
-        </Button>
-      </CardActions>
+      {shouldShowCardActions() && (
+        <CardActions
+          sx={{
+            p: "0 4px 8px 4px",
+          }}
+        >
+          {!!card?.memberIds?.length && (
+            <Button size="small" startIcon={<GroupIcon />}>
+              {card?.memberIds?.length}
+            </Button>
+          )}
+          {!!card?.comments?.length && (
+            <Button size="small" startIcon={<ModeCommentIcon />}>
+              {card?.comments?.length}
+            </Button>
+          )}
+          {!!card?.attachments?.length && (
+            <Button size="small" startIcon={<AttachmentIcon />}>
+              {card?.attachments?.length}
+            </Button>
+          )}
+        </CardActions>
+      )}
     </MuiCard>
   );
 }

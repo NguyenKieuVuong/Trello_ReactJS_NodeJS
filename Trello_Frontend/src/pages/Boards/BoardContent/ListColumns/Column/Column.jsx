@@ -26,7 +26,7 @@ import theme from "~/theme";
 import { bgcolor } from "@mui/system";
 import Box from "@mui/material/Box";
 import ListCards from "./ListCards/ListCards";
-function Column() {
+function Column({column}) {
   const Column_Header_Height = "50px";
   const Column_Footer_Height = "56px";
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -37,6 +37,7 @@ function Column() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const orderedCards = mapOrder(board?.cards, board?.cardOrderIds, "_id");
   return (
     <Box
       sx={{
@@ -67,7 +68,7 @@ function Column() {
           variant="h6"
           sx={{ fontWeight: "700", cursor: "pointer", fontSize: "1rem" }}
         >
-          Column Title
+          {column?.title}
         </Typography>
         <Box>
           <Tooltip title="Menu">
@@ -137,7 +138,7 @@ function Column() {
         </Box>
       </Box>
       {/* Box List Card */}
-      <ListCards />
+      <ListCards cards={orderedCards} />
       {/* Box Column Footer */}
       <Box
         sx={{
